@@ -1,4 +1,6 @@
-package com.github.enterprisewifisafeguard;
+package com.github.enterprisewifisafeguard.ui;
+
+import com.github.enterprisewifisafeguard.R;
 
 import android.app.Activity;
 import android.os.Bundle;
