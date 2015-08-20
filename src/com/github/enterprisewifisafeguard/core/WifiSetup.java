@@ -89,8 +89,9 @@ private X509Certificate getRootCA(Context context) throws CertificateException {
     X509Certificate cert = null;
     
         ca = CertificateFactory.getInstance("X.509");
-      //TODO  InputStream certStream = context.getResources().openRawResource(R.raw.);
+      //TODO  ;
       //TODO  cert = (X509Certificate) ca.generateCertificate(certStream);
+        cert.getSubjectDN().getName();
       return cert;       
 }
 }
