@@ -6,6 +6,8 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.List;
 
+import com.github.enterprisewifisafeguard.utils.CertificateManager;
+
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
@@ -15,10 +17,12 @@ public class WifiSetup {
 private boolean error = false;	
 private WifiManager wifiObj = null;
 private Context context;
+CertificateManager certMan = null;
 
 public WifiSetup(Context context) {
 	wifiObj = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
 	this.context = context;
+	certMan = new CertificateManager(context);
 }
 
 public boolean createConnection(String ssid, String username, String password, String anonymous, String cn, int eap_meth, int phase2) {
@@ -82,16 +86,13 @@ public int addWifi (WifiConfiguration config) {
 	return wifiObj.addNetwork(config);
 }
 
-//TODO Cerfificate stuff
+//TODO Cerfificate stuff. We need the name of the required CA certificate!!
 
-private X509Certificate getRootCA(Context context) throws CertificateException {
-    CertificateFactory ca = null;
+private X509Certificate getRootCA(Context context){
+	String certName = "";
     X509Certificate cert = null;
     
-        ca = CertificateFactory.getInstance("X.509");
-      //TODO  ;
-      //TODO  cert = (X509Certificate) ca.generateCertificate(certStream);
-        cert.getSubjectDN().getName();
-      return cert;       
+    cert = certMan.getCertificate(certName);
+    return cert;       
 }
 }

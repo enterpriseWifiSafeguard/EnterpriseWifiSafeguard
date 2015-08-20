@@ -9,6 +9,7 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,10 +22,7 @@ public class CertificateManager {
 Map<String, X509Certificate> certificates = new HashMap<String, X509Certificate>();
 
 public CertificateManager (Context context)
-{
-	//TODO fill Hashmap
-	//Some examplecode how to retrieve the root certificates from bundle and extract the Common Name
-	
+{	
     InputStream fis = null;
     CertificateFactory cf = null;
     ArrayList<X509Certificate> certs = null;
@@ -45,16 +43,22 @@ try{
         cn = cn.trim();
         if (cn.length()>1)
         {
-    	 System.out.println(cn);
+        	certificates.put("cn", c);
         }
      }
 }
-catch(Exception e) {
-	
+catch(Exception e) {	
 }
 finally
 {}
+}
 
+public X509Certificate getCertificate(String certName) {
+	return certificates.get(certName);
+}
+
+public Set<String> getAllCertNames() {
+	return certificates.keySet();
 }
 
 }
