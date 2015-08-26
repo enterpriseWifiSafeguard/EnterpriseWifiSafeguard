@@ -16,16 +16,14 @@ import android.util.Log;
 public class WifiSetup {
 private boolean error = false;	
 private WifiManager wifiObj = null;
-private Context context;
 CertificateManager certMan = null;
 
 public WifiSetup(Context context) {
 	wifiObj = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
-	this.context = context;
 	certMan = CertificateManager.getInstance(context);
 }
 
-public boolean createConnection(String ssid, String username, String password, String anonymous, String cn, int eap_meth, int phase2) {
+public boolean createConnection(String ssid, String username, String password, String anonymous, String cn, int eap_meth, int phase2, String caName) {
 	WifiConfig entConfig = new WifiConfig();
 	WifiConfiguration wifi = this.getWifiConfiguration(ssid);
 	//enable Wifi
@@ -44,7 +42,7 @@ public boolean createConnection(String ssid, String username, String password, S
 	entConfig.setEap_method(eap_meth);
 	entConfig.setPhase2_method(phase2);
 	try {
-	entConfig.setCa_certificate(this.getRootCA(this.context));
+	entConfig.setCa_certificate(this.getRootCA(caName));
 	wifi = entConfig.createNewWifiProfile();
 	}
 	catch (Exception e) {
@@ -58,6 +56,7 @@ public boolean createConnection(String ssid, String username, String password, S
 	}
 	//save network configurations
 	error = wifiObj.saveConfiguration();
+	Log.d("Error", "Error: "+error);
 	return error;
 }
 
@@ -86,13 +85,10 @@ public int addWifi (WifiConfiguration config) {
 	return wifiObj.addNetwork(config);
 }
 
-//TODO Cerfificate stuff. We need the name of the required CA certificate!!
-
-private X509Certificate getRootCA(Context context){
-	String certName = "";
+private X509Certificate getRootCA(String caName){
     X509Certificate cert = null;
     
-    cert = certMan.getCertificate(certName);
+    cert = certMan.getCertificate(caName);
     return cert;       
 }
 }
