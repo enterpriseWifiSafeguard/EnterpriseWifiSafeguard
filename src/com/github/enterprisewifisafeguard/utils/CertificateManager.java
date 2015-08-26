@@ -52,7 +52,6 @@ try{
         }
         cn = cn.replace("CN=","");
         cn = cn.trim();
-        Log.d("CN", cn);
         if (cn.length()>1)
         {
         	
@@ -72,7 +71,6 @@ public X509Certificate getCertificate(String certName) {
 }
 
 public Set<String> getAllCertNames() {
-	Log.d("Cert2", "Number: "+certificates.size());
 	return certificates.keySet();
 }
 

@@ -80,7 +80,8 @@
         <Spinner
             android:id="@+id/feap"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" 
+            android:entries="@array/eap_array"/>
 
         <TextView
             android:id="@+id/text_phase2"
@@ -91,7 +92,9 @@
         <Spinner
             android:id="@+id/fphase2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" 
+            android:entries="@array/phase_array"/>
+        
 
         <TextView
             android:id="@+id/text_ca"

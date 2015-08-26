@@ -104,5 +104,4 @@ public class WifiConfig {
 		//return the new profile
 		return profile;
 	}
-
 }

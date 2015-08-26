@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
         ArrayAdapter<String> certAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item,certName.toArray(new String[certName.size()]));
         fcert.setAdapter(certAdapter);
+        
     }
 
 
