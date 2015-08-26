@@ -22,7 +22,7 @@ CertificateManager certMan = null;
 public WifiSetup(Context context) {
 	wifiObj = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
 	this.context = context;
-	certMan = new CertificateManager(context);
+	certMan = CertificateManager.getInstance(context);
 }
 
 public boolean createConnection(String ssid, String username, String password, String anonymous, String cn, int eap_meth, int phase2) {

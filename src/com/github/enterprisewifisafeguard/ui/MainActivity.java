@@ -1,11 +1,16 @@
 package com.github.enterprisewifisafeguard.ui;
 
+import java.util.Set;
+
 import com.github.enterprisewifisafeguard.R;
+import com.github.enterprisewifisafeguard.utils.CertificateManager;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class MainActivity extends Activity {
@@ -14,6 +19,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Spinner fcert = (Spinner) findViewById(R.id.fca);
+        Set<String> certName = CertificateManager.getInstance(this.getApplicationContext()).getAllCertNames();
+        ArrayAdapter<String> certAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item,certName.toArray(new String[certName.size()]));
+        fcert.setAdapter(certAdapter);
     }
 
 

@@ -25,18 +25,24 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000b;
-        public static final int button1=0x7f090009;
-        public static final int editText1=0x7f090000;
-        public static final int editText2=0x7f090001;
-        public static final int editText3=0x7f090003;
-        public static final int editText4=0x7f090002;
-        public static final int editText5=0x7f090004;
-        public static final int textView1=0x7f090005;
-        public static final int textView2=0x7f090008;
-        public static final int textView3=0x7f090006;
-        public static final int textView4=0x7f090007;
-        public static final int textView5=0x7f09000a;
+        public static final int action_settings=0x7f090011;
+        public static final int config_button=0x7f090010;
+        public static final int fano=0x7f090007;
+        public static final int fca=0x7f09000f;
+        public static final int fcn=0x7f090009;
+        public static final int feap=0x7f09000b;
+        public static final int fpass=0x7f090005;
+        public static final int fphase2=0x7f09000d;
+        public static final int fssid=0x7f090001;
+        public static final int fuser=0x7f090003;
+        public static final int text_ano=0x7f090006;
+        public static final int text_ca=0x7f09000e;
+        public static final int text_cn=0x7f090008;
+        public static final int text_eap=0x7f09000a;
+        public static final int text_pass=0x7f090004;
+        public static final int text_phase2=0x7f09000c;
+        public static final int text_ssid=0x7f090000;
+        public static final int text_user=0x7f090002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -45,16 +51,63 @@ public final class R {
         public static final int main=0x7f080000;
     }
     public static final class raw {
-        public static final int cabundle=0x7f040000;
+        public static final int a=0x7f040000;
+        public static final int aa=0x7f040001;
+        public static final int ab=0x7f040002;
+        public static final int ac=0x7f040003;
+        public static final int ad=0x7f040004;
+        public static final int ae=0x7f040005;
+        public static final int af=0x7f040006;
+        public static final int ag=0x7f040007;
+        public static final int ah=0x7f040008;
+        public static final int ai=0x7f040009;
+        public static final int aj=0x7f04000a;
+        public static final int ak=0x7f04000b;
+        public static final int al=0x7f04000c;
+        public static final int am=0x7f04000d;
+        public static final int an=0x7f04000e;
+        public static final int ao=0x7f04000f;
+        public static final int ap=0x7f040010;
+        public static final int aq=0x7f040011;
+        public static final int ar=0x7f040012;
+        public static final int as=0x7f040013;
+        public static final int b=0x7f040014;
+        public static final int c=0x7f040015;
+        public static final int d=0x7f040016;
+        public static final int e=0x7f040017;
+        public static final int f=0x7f040018;
+        public static final int g=0x7f040019;
+        public static final int h=0x7f04001a;
+        public static final int i=0x7f04001b;
+        public static final int j=0x7f04001c;
+        public static final int k=0x7f04001d;
+        public static final int l=0x7f04001e;
+        public static final int m=0x7f04001f;
+        public static final int n=0x7f040020;
+        public static final int o=0x7f040021;
+        public static final int p=0x7f040022;
+        public static final int q=0x7f040023;
+        public static final int r=0x7f040024;
+        public static final int s=0x7f040025;
+        public static final int t=0x7f040026;
+        public static final int u=0x7f040027;
+        public static final int v=0x7f040028;
+        public static final int w=0x7f040029;
+        public static final int x=0x7f04002a;
+        public static final int y=0x7f04002b;
+        public static final int z=0x7f04002c;
     }
     public static final class string {
         public static final int action_settings=0x7f060002;
         public static final int anonymous=0x7f060006;
         public static final int app_name=0x7f060000;
         public static final int button=0x7f060008;
+        public static final int cert=0x7f06000b;
         public static final int cn=0x7f060007;
+        public static final int eap=0x7f060009;
         public static final int hello_world=0x7f060001;
         public static final int password=0x7f060005;
+        public static final int phase2=0x7f06000a;
         public static final int ssid=0x7f060003;
         public static final int username=0x7f060004;
     }

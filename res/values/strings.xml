@@ -10,5 +10,8 @@
     <string name="anonymous">Anonymous Identity</string>
     <string name="cn">Servername in Certifikate (Common Name)</string>
     <string name="button">Configure</string>
+    <string name="eap">EAP-Method</string>
+    <string name="phase2">Phase 2 Method</string>
+    <string name="cert">Root Certificate (CA)</string>
 
 </resources>
