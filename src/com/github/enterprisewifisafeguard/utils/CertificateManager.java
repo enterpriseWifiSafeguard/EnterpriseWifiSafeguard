@@ -67,6 +67,7 @@ finally
 }
 
 public X509Certificate getCertificate(String certName) {
+	Log.d("ews-debug", certificates.get(certName).toString());
 	return certificates.get(certName);
 }
 

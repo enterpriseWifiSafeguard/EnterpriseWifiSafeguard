@@ -71,6 +71,7 @@ public class WifiConfig {
         
         //Set SSID
 		profile.SSID = this.ssid;
+		Log.d("ews-ssid",this.ssid);
 		
 		//Enterprise Configuration
 		WifiEnterpriseConfig enterprise = new WifiEnterpriseConfig();
@@ -101,6 +102,7 @@ public class WifiConfig {
 		//Add enterprise config to profile
 		profile.enterpriseConfig=enterprise;
 		
+		Log.d("ews-profile",profile.toString());
 		//return the new profile
 		return profile;
 	}

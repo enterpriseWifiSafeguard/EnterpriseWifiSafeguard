@@ -9,6 +9,7 @@ import com.github.enterprisewifisafeguard.utils.CertificateManager;
 import android.app.Activity;
 import android.net.wifi.WifiEnterpriseConfig;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,10 +49,11 @@ public class MainActivity extends Activity {
     	//button listener for config button
         Button button= (Button) findViewById(R.id.config_button);
         button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-              buttonPressed();
+            @Override
+			public void onClick(View v) {  
+            	buttonPressed();
             }
-        });
+        }); 
 
         
     }
@@ -77,40 +79,42 @@ public class MainActivity extends Activity {
     }
     
     public void buttonPressed() {
+    	Log.d("ews-debug", "Button has pressed");
     	int eap;
     	int phase2;
     	//Select eap Mehod
     	String seap = feap.getSelectedItem().toString();
-    	if (seap=="PEAP") {
+    	if (seap.equals("PEAP")) {
     		eap = WifiEnterpriseConfig.Eap.PEAP;
     	}
-    	else if (seap=="PWD") {
+    	else if (seap.equals("PWD")) {
     		eap = WifiEnterpriseConfig.Eap.PWD;
     	}
-    	else if (seap=="TLS") {
+    	else if (seap.equals("TLS")) {
     		eap = WifiEnterpriseConfig.Eap.TLS;
     	}
-    	else if (seap=="TTLS") {
+    	else if (seap.equals("TTLS")) {
     		eap = WifiEnterpriseConfig.Eap.TTLS;
     	}
     	else {
     		eap = -1;
     	}
+    	Log.d("ews-debug", seap+eap);
     	//Select Phase2 Method
     	String sphase2 = fPhase2.getSelectedItem().toString();
-         if (sphase2=="MSCHAP") {
+         if (sphase2.equals("MSCHAP")) {
     		phase2 = WifiEnterpriseConfig.Phase2.MSCHAP;
     	}
-         else if (sphase2=="MSCHAPV2") {
+         else if (sphase2.equals("MSCHAPV2")) {
      		phase2 = WifiEnterpriseConfig.Phase2.MSCHAPV2;
      	}
-         else if (sphase2=="PAP") {
+         else if (sphase2.equals("PAP")) {
       		phase2 = WifiEnterpriseConfig.Phase2.PAP;
       	}
          else {
         	 phase2= -1;
          }
-         
+         Log.d("ews-debug", sphase2+phase2);
     	WifiSetup setup = new WifiSetup(this.getApplicationContext());
     	setup.createConnection("\""+fssid.getText().toString()+"\"", fuser.getText().toString()
     			, fpass.getText().toString(), fanonymous.getText().toString(), 
