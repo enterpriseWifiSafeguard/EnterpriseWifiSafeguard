@@ -64,20 +64,20 @@ public boolean createConnection(String ssid, String username, String password, S
 }
 
 public WifiConfiguration getWifiConfiguration(String ssid) {
-	WifiConfiguration Config = null;
+	WifiConfiguration config = null;
 	List<WifiConfiguration> wifis = wifiObj.getConfiguredNetworks();
 	if (wifis == null) {
-		Config = null;
+		config = null;
 	}
 	else {
 		for (WifiConfiguration curr : wifis) {
 			if(curr.SSID.equals(ssid)){
-				Config = curr;
+				config = curr;
 				break;
 			}
 		}
 	}
-	return Config;
+	return config;
 }
 
 public boolean removeWifi(int netId) {
