@@ -9,3 +9,7 @@ subject_match option from the WPA_Supplicant for security reasons.
 ## Build Instructions
 
 ## Setup Instructions
+
+The settings heavily depend on what your Wifi provider requires. For the University of Konstanz the following screenshot will be helpfull:
+
+![Sample Config University of Konstanz](config-screen.png)
