@@ -1,5 +1,15 @@
 package com.github.enterprisewifisafeguard.ui;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.List;
 import java.util.Set;
 
 import com.github.enterprisewifisafeguard.R;
@@ -9,6 +19,8 @@ import com.github.enterprisewifisafeguard.utils.CertificateManager;
 import android.app.Activity;
 import android.net.wifi.WifiEnterpriseConfig;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore.Files;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +29,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
@@ -28,6 +41,9 @@ public class MainActivity extends Activity {
 	private EditText fpass = null;
 	private EditText fanonymous = null;
 	private EditText fCn = null;
+	private TextView feedback = null;
+	private boolean folderFlag = false;
+	private File exData = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +62,16 @@ public class MainActivity extends Activity {
     	fpass = (EditText) findViewById(R.id.fpass);
     	fanonymous = (EditText) findViewById(R.id.fano);
     	fCn = (EditText) findViewById(R.id.fcn);
+    	feedback = (TextView) findViewById(R.id.feedback);
     	//button listener for config button
         Button button= (Button) findViewById(R.id.config_button);
+        File folder = new File(Environment.getExternalStorageDirectory() + "/WifiEnterpriseSafeguard");
+        boolean success = true;
+        if (!folder.exists()) {
+            success = folder.mkdir();    
+        }
+        folderFlag = success;
+        this.exData = folder;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
 			public void onClick(View v) {  
@@ -72,7 +96,12 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.fimport) {
+        	this.cImport();
+            return true;
+        }
+        else if (id == R.id.export) {
+        	this.cExport();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -116,8 +145,86 @@ public class MainActivity extends Activity {
          }
          Log.d("ews-debug", sphase2+phase2);
     	WifiSetup setup = new WifiSetup(this.getApplicationContext());
-    	setup.createConnection("\""+fssid.getText().toString()+"\"", fuser.getText().toString()
+    	boolean error = setup.createConnection("\""+fssid.getText().toString()+"\"", fuser.getText().toString()
     			, fpass.getText().toString(), fanonymous.getText().toString(), 
     			fCn.getText().toString(), eap, phase2, fcert.getSelectedItem().toString());
+    	if(error) {
+    		feedback.setText("Could not Save Network");
+    	}
+    	else {
+    		feedback.setText("Network setup finished!");
+    	}
     }
+    
+    //Import Configuration from /EnterpriseWifiSafeguard 
+    public void cImport() {
+    	 FileInputStream fstream = null;
+		try {
+			fstream = new FileInputStream(this.exData+"/config.txt");
+		} catch (FileNotFoundException e) {
+			Log.d("ews-debug", "File not found");
+		}
+    	BufferedReader reader = null;
+    	reader = new BufferedReader(new InputStreamReader(fstream));
+        try {
+			this.fssid.setText(reader.readLine());
+			this.fanonymous.setText(reader.readLine());
+			this.fCn.setText(reader.readLine());
+			 for (int i=0;i<this.feap.getCount();i++){
+				   if (this.feap.getItemAtPosition(i).toString().equalsIgnoreCase(reader.readLine())){
+				    this.feap.setSelection(i);
+				    break;
+				   }
+				  }
+			 for (int i=0;i<this.fPhase2.getCount();i++){
+				   if (this.fPhase2.getItemAtPosition(i).toString().equalsIgnoreCase(reader.readLine())){
+				    this.fPhase2.setSelection(i);
+				    break;
+				   }
+				  }
+			 for (int i=0;i<this.fcert.getCount();i++){
+				   if (this.fcert.getItemAtPosition(i).toString().equalsIgnoreCase(reader.readLine())){
+				    this.fcert.setSelection(i);
+				    break;
+				   }
+				  }
+		} catch (IOException e) {
+			Log.d("Exception", e.getMessage());
+		}
+        feedback.setText("Imported from /EnterpriseWifiSaveguard/config.txt");
+    }
+  //Export Configuration to /EnterpriseWifiSafeguard 
+    public void cExport() {
+    	File config=new File(this.exData,"config.txt");
+    	FileOutputStream fos = null;
+		try {
+			fos = new FileOutputStream(config, false);
+		} catch (FileNotFoundException e) {
+			Log.d("ews-debug","File Error");
+		}
+    	 
+    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+     
+    		try {
+				bw.write(this.fssid.getText().toString());
+				bw.newLine();
+				bw.write(this.fanonymous.getText().toString());
+				bw.newLine();
+				bw.write(this.fCn.getText().toString());
+				bw.newLine();
+				bw.write(this.feap.getSelectedItem().toString());
+				bw.newLine();
+				bw.write(this.fPhase2.getSelectedItem().toString());
+				bw.newLine();
+				bw.write(this.fcert.getSelectedItem().toString());
+				bw.newLine();
+				bw.close();
+			} catch (IOException e) {	
+			Log.d("ews-debug", "could not write");
+			} 
+    		feedback.setText("Exported to /EnterpriseWifiSaveguard/config.txt");
+    }
+    
 }
+
+

@@ -32,7 +32,7 @@ public boolean createConnection(String ssid, String username, String password, S
 	}
 	//remove if wifi exists
 	if(wifi !=null) {
-		error = !this.removeWifi(wifi.networkId);
+	   this.removeWifi(wifi.networkId);
 	}
 	//create new Wifi Configuration
 	entConfig.setSsid(ssid);
@@ -58,7 +58,7 @@ public boolean createConnection(String ssid, String username, String password, S
 		error = true;
 	}
 	//save network configurations
-	error = wifiObj.saveConfiguration();
+	error = !wifiObj.saveConfiguration();
 	Log.d("ews-debug", "Error: "+error);
 	return error;
 }

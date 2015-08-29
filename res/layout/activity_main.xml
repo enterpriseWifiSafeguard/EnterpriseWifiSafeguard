@@ -69,6 +69,7 @@
             android:id="@+id/fcn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textNoSuggestions|textVisiblePassword"
             android:ems="10" />
 
         <TextView
@@ -112,6 +113,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button" />
+
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </LinearLayout>
 
