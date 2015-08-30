@@ -4,6 +4,8 @@
 EnterpriseWifiSafeguard is an Android App for setting up Wifis with WPA/WPA2-Enterprise. It provides a lot of built in certificates and it is possible to set the
 subject_match option from the WPA_Supplicant for security reasons. 
 
+*Note*: the app is still under development and is just an alpha version at the moment
+
 ## Build Requirements
 
 ## Build Instructions
