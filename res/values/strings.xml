@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">EnterpriseWifiSafeguard</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="export">Export</string>
-    <string name="fimport">Import</string>
-    <string name="ssid">SSID</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="anonymous">Anonymous Identity</string>
-    <string name="cn">Servername in Certifikate (Common Name)</string>
-    <string name="button">Configure</string>
-    <string name="eap">EAP-Method</string>
-    <string name="phase2">Phase 2 Method</string>
-    <string name="cert">Root Certificate (CA)</string>
+    
+<string name="app_name">EnterpriseWifiSafeguard</string>
+<string name="export">Export Configuration</string>
+<string name="fimport">Import Configuration</string>
+<string name="ssid">Wireless Network (ssid)</string>
+<string name="username">Username</string>
+<string name="password">Password</string>
+<string name="anonymous">Outer Identity</string>
+<string name="cn">Server (certificate cn)</string>
+<string name="button">Configure</string>
+<string name="eap">Outer Authentication (eap)</string>
+<string name="phase2">Inner Authentication (phase 2)</string>
+<string name="cert">Root Certificate (ca)</string>
 
 </resources>
