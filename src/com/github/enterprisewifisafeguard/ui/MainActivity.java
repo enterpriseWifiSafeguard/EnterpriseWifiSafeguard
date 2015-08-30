@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
     	feedback = (TextView) findViewById(R.id.feedback);
     	//button listener for config button
         Button button= (Button) findViewById(R.id.config_button);
-        File folder = new File(Environment.getExternalStorageDirectory() + "/WifiEnterpriseSafeguard");
+        File folder = new File(Environment.getExternalStorageDirectory() + "/EnterpriseWifiSafeguard");
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdir();    
@@ -159,6 +159,9 @@ public class MainActivity extends Activity {
     //Import Configuration from /EnterpriseWifiSafeguard 
     public void cImport() {
     	 FileInputStream fstream = null;
+    	 File f = new File(this.exData+"/config.txt");
+    	 if(f.exists())
+    	 {
 		try {
 			fstream = new FileInputStream(this.exData+"/config.txt");
 		} catch (FileNotFoundException e) {
@@ -192,6 +195,11 @@ public class MainActivity extends Activity {
 			Log.d("Exception", e.getMessage());
 		}
         feedback.setText("Imported from /EnterpriseWifiSaveguard/config.txt");
+    	 }
+    	 else {
+    		 feedback.setText("There is no file /EnterpriseWifiSaveguard/config.txt to import" );
+    	 }
+    	 
     }
   //Export Configuration to /EnterpriseWifiSafeguard 
     public void cExport() {
