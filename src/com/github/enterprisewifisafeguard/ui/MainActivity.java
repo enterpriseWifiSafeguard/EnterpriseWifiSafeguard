@@ -173,20 +173,27 @@ public class MainActivity extends Activity {
 			this.fssid.setText(reader.readLine());
 			this.fanonymous.setText(reader.readLine());
 			this.fCn.setText(reader.readLine());
+			String line = reader.readLine();
+			Log.d("ews-debug", line);
 			 for (int i=0;i<this.feap.getCount();i++){
-				   if (this.feap.getItemAtPosition(i).toString().equalsIgnoreCase(reader.readLine())){
+				   if (this.feap.getItemAtPosition(i).toString().equals(line)){
 				    this.feap.setSelection(i);
+				    Log.d("ews-debug", "index "+i);
 				    break;
 				   }
 				  }
+			 line = reader.readLine();
+			 Log.d("ews-debug", line);
 			 for (int i=0;i<this.fPhase2.getCount();i++){
-				   if (this.fPhase2.getItemAtPosition(i).toString().equalsIgnoreCase(reader.readLine())){
+				   if (this.fPhase2.getItemAtPosition(i).toString().equalsIgnoreCase(line)){
 				    this.fPhase2.setSelection(i);
 				    break;
 				   }
 				  }
+			 line = reader.readLine();
+			 Log.d("ews-debug", line);
 			 for (int i=0;i<this.fcert.getCount();i++){
-				   if (this.fcert.getItemAtPosition(i).toString().equalsIgnoreCase(reader.readLine())){
+				   if (this.fcert.getItemAtPosition(i).toString().equalsIgnoreCase(line)){
 				    this.fcert.setSelection(i);
 				    break;
 				   }
