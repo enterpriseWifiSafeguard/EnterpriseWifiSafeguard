@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -51,8 +52,10 @@ public class MainActivity extends Activity {
         //get Values for the Certificate Chooser
         fcert = (Spinner) findViewById(R.id.fca);
         Set<String> certName = CertificateManager.getInstance(this.getApplicationContext()).getAllCertNames();
+        String[] certs = certName.toArray(new String[certName.size()]);
+        Arrays.sort(certs);
         ArrayAdapter<String> certAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item,certName.toArray(new String[certName.size()]));
+                android.R.layout.simple_spinner_item,certs);
         fcert.setAdapter(certAdapter);
         //get the fields
         feap = (Spinner) findViewById(R.id.feap);
