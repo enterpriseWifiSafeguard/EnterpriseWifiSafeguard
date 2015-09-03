@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+<string name="app_name">EnterpriseWifiSafeguard</string>
+<string name="export">Export Configuration</string>
+<string name="fimport">Import Configuration</string>
+<string name="ssid">Drahtloses Netzwerk (ssid)</string>
+<string name="username">Username</string>
+<string name="password">Passwort</string>
+<string name="anonymous">Äußere Identität</string>
+<string name="cn">Server (Zertifikats cn)</string>
+<string name="button">Konfigurieren</string>
+<string name="eap">Äußere Authentikation (eap)</string>
+<string name="phase2">Innere Authentication (phase 2)</string>
+<string name="cert">Root Zertifikat (ca)</string>
+
+</resources>
