@@ -6,10 +6,6 @@ subject_match option from the WPA_Supplicant for security reasons.
 
 *Note*: the app is still under development and is just an alpha version at the moment
 
-## Build Requirements
-
-## Build Instructions
-
 ## Setup Instructions
 
 The settings heavily depend on what your Wifi provider requires. For the University of Konstanz the following screenshot will be helpfull:
