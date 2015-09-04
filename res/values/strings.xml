@@ -11,8 +11,8 @@
 <string name="anonymous">Outer Identity</string>
 <string name="cn">Server (certificate cn)</string>
 <string name="button">Configure</string>
-<string name="eap">Outer Authentication (eap)</string>
-<string name="phase2">Inner Authentication (phase 2)</string>
+<string name="eap">Outer Authentication</string>
+<string name="phase2">Inner Authentication</string>
 <string name="cert">Root Certificate (ca)</string>
 
 </resources>

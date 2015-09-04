@@ -11,8 +11,8 @@
 <string name="anonymous">Äußere Identität</string>
 <string name="cn">Server (Zertifikats cn)</string>
 <string name="button">Konfigurieren</string>
-<string name="eap">Äußere Authentikation (eap)</string>
-<string name="phase2">Innere Authentication (phase 2)</string>
+<string name="eap">Äußere Authentikation</string>
+<string name="phase2">Innere Authentication</string>
 <string name="cert">Root Zertifikat (ca)</string>
 
 </resources>
