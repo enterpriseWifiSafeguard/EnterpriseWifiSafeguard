@@ -1,4 +1,4 @@
-package com.github.enterprisewifisafegueard.exception;
+package com.github.enterprisewifisafeguard.exception;
 
 public class EnterpriseConfigurationMissingPasswordException extends EnterpriseConfigurationException {
 	public EnterpriseConfigurationMissingPasswordException() {
