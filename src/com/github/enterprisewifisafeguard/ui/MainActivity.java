@@ -106,9 +106,8 @@ public class MainActivity extends Activity {
 
 	public void buttonPressed() {
 		Log.d("ews-debug", "Button has pressed");
-		int eap;
-		int phase2;
 		// Select eap Mehod
+		final int eap;
 		String seap = feap.getSelectedItem().toString();
 		if (seap.equals("PEAP")) {
 			eap = WifiEnterpriseConfig.Eap.PEAP;
@@ -123,7 +122,8 @@ public class MainActivity extends Activity {
 		}
 		Log.d("ews-debug", seap + eap);
 		// Select Phase2 Method
-		String sphase2 = fPhase2.getSelectedItem().toString();
+		final String sphase2 = fPhase2.getSelectedItem().toString();
+		final int phase2;
 		if (sphase2.equals("MSCHAP")) {
 			phase2 = WifiEnterpriseConfig.Phase2.MSCHAP;
 		} else if (sphase2.equals("MSCHAPV2")) {
@@ -134,7 +134,8 @@ public class MainActivity extends Activity {
 			phase2 = -1;
 		}
 		Log.d("ews-debug", sphase2 + phase2);
-		WifiSetup setup = new WifiSetup(this.getApplicationContext());
+
+		final WifiSetup setup = new WifiSetup(this.getApplicationContext());
 		boolean error = setup.createConnection("\"" + fssid.getText().toString() + "\"", fuser.getText().toString(),
 				fpass.getText().toString(), fanonymous.getText().toString(), fCn.getText().toString(), eap, phase2,
 				fcert.getSelectedItem().toString());

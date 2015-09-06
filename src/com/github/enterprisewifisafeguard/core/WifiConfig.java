@@ -11,7 +11,7 @@ import android.net.wifi.WifiEnterpriseConfig;
 import android.util.Log;
 
 public class WifiConfig {
-	//Attributes
+	// Attributes
 	private int eap_method;
 	private int phase2_method;
 	private String ssid;
@@ -20,8 +20,8 @@ public class WifiConfig {
 	private String anonymous_ident;
 	private X509Certificate ca_certificate;
 	private String subject_match;
-	
-	//Setters
+
+	// Setters
 	public void setSsid(String ssid) {
 		this.ssid = ssid;
 	}
@@ -53,57 +53,54 @@ public class WifiConfig {
 	public void setSubject_match(String subject_match) {
 		this.subject_match = subject_match;
 	}
-	
-	
-	//Create Wifi Profile
+
+	// Create Wifi Profile
 	public WifiConfiguration createNewWifiProfile() throws EnterpriseConfigurationException {
 		WifiConfiguration profile = new WifiConfiguration();
-		
-		//Security Settings for WPA/WPA2
-        profile.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);						
-        profile.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);   	
-        profile.allowedProtocols.set(WifiConfiguration.Protocol.RSN);         			
-        profile.allowedProtocols.set(WifiConfiguration.Protocol.WPA);         			
-        profile.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);   			
-        profile.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);   			
-        profile.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_EAP);  			
-        profile.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.IEEE8021X);	 		
-        
-        //Set SSID
+
+		// Security Settings for WPA/WPA2
+		profile.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+		profile.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+		profile.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
+		profile.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+		profile.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+		profile.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+		profile.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_EAP);
+		profile.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.IEEE8021X);
+
+		// Set SSID
 		profile.SSID = this.ssid;
-		Log.d("ews-ssid",this.ssid);
-		
-		//Enterprise Configuration
+		Log.d("ews-ssid", this.ssid);
+
+		// Enterprise Configuration
 		WifiEnterpriseConfig enterprise = new WifiEnterpriseConfig();
-		//Set Username
-		if(username != null && username.length() > 0) {
+		// Set Username
+		if (username != null && username.length() > 0) {
 			enterprise.setIdentity(this.username);
-		}
-		else{
+		} else {
 			throw new EnterpriseConfigurationMissingUsernameException();
 		}
-		//Set Password
-		if(password != null && password.length() > 0) {
+		// Set Password
+		if (password != null && password.length() > 0) {
 			enterprise.setPassword(this.password);
-		}
-		else {
+		} else {
 			throw new EnterpriseConfigurationMissingPasswordException();
 		}
-		//Set eap method
+		// Set eap method
 		enterprise.setEapMethod(this.eap_method);
-		//Set Phase2 methos
+		// Set Phase2 methos
 		enterprise.setPhase2Method(this.phase2_method);
-		//Set Anonymous Identity
+		// Set Anonymous Identity
 		enterprise.setAnonymousIdentity(this.anonymous_ident);
-		//Set CA_Certificate
+		// Set CA_Certificate
 		enterprise.setCaCertificate(this.ca_certificate);
-		//Set Subject_match
+		// Set Subject_match
 		enterprise.setSubjectMatch(this.subject_match);
-		//Add enterprise config to profile
-		profile.enterpriseConfig=enterprise;
-		
-		Log.d("ews-profile",profile.toString());
-		//return the new profile
+		// Add enterprise config to profile
+		profile.enterpriseConfig = enterprise;
+
+		Log.d("ews-profile", profile.toString());
+		// return the new profile
 		return profile;
 	}
 }
