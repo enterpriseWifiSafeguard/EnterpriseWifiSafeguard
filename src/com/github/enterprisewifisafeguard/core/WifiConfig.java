@@ -2,9 +2,9 @@ package com.github.enterprisewifisafeguard.core;
 
 import java.security.cert.X509Certificate;
 
-import com.github.enterprisewifisafegueard.exception.EnterpriseConfigurationException;
-import com.github.enterprisewifisafegueard.exception.EnterpriseConfigurationMissingPasswordException;
-import com.github.enterprisewifisafegueard.exception.EnterpriseConfigurationMissingUsernameException;
+import com.github.enterprisewifisafeguard.exception.EnterpriseConfigurationException;
+import com.github.enterprisewifisafeguard.exception.EnterpriseConfigurationMissingPasswordException;
+import com.github.enterprisewifisafeguard.exception.EnterpriseConfigurationMissingUsernameException;
 
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiEnterpriseConfig;

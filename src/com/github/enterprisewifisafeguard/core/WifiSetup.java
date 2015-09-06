@@ -4,8 +4,8 @@ package com.github.enterprisewifisafeguard.core;
 import java.security.cert.X509Certificate;
 import java.util.List;
 
+import com.github.enterprisewifisafeguard.exception.EnterpriseConfigurationException;
 import com.github.enterprisewifisafeguard.utils.CertificateManager;
-import com.github.enterprisewifisafegueard.exception.EnterpriseConfigurationException;
 
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
