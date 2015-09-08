@@ -9,7 +9,11 @@ import com.github.enterprisewifisafeguard.exception.EnterpriseConfigurationMissi
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiEnterpriseConfig;
 import android.util.Log;
-
+/**
+ * This class creates a new wifi config for android
+ * @author Maximilian Ortwein
+ *
+ */
 public class WifiConfig {
 	// Attributes
 	private int eap_method;

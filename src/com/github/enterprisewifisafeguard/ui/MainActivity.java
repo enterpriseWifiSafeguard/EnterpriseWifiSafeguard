@@ -65,6 +65,7 @@ public class MainActivity extends Activity {
 		feedback = (TextView) findViewById(R.id.feedback);
 		// button listener for config button
 		Button button = (Button) findViewById(R.id.config_button);
+		//create new appfolder if no folder exists
 		File folder = new File(Environment.getExternalStorageDirectory() + "/EnterpriseWifiSafeguard");
 		boolean success = true;
 		if (!folder.exists()) {
@@ -72,6 +73,7 @@ public class MainActivity extends Activity {
 		}
 		folderFlag = success;
 		this.exData = folder;
+		//Set buttonlistener
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -104,6 +106,9 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * Initiate wifi setup if button has been pressed
+	 */
 	public void buttonPressed() {
 		Log.d("ews-debug", "Button has pressed");
 		// Select eap Mehod
@@ -134,7 +139,7 @@ public class MainActivity extends Activity {
 			phase2 = -1;
 		}
 		Log.d("ews-debug", sphase2 + phase2);
-
+        //create wifi configuration and save it
 		final WifiSetup setup = new WifiSetup(this.getApplicationContext());
 		boolean error = setup.createConnection("\"" + fssid.getText().toString() + "\"", fuser.getText().toString(),
 				fpass.getText().toString(), fanonymous.getText().toString(), fCn.getText().toString(), eap, phase2,

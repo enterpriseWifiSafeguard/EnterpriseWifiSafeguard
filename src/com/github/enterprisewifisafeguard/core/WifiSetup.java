@@ -10,16 +10,32 @@ import android.content.Context;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.util.Log;
-
+/**
+ * This class saves the new wificonfig and removes old ones if needed
+ * @author Maximilian Ortwein
+ *
+ */
 public class WifiSetup {
 	private WifiManager wifiObj = null;
 	CertificateManager certMan = null;
 
 	public WifiSetup(Context context) {
+		//get the android wifimanager
 		wifiObj = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
 		certMan = CertificateManager.getInstance(context);
 	}
-
+/**
+ * This function creates a new connection and saves it
+ * @param ssid
+ * @param username
+ * @param password
+ * @param anonymous
+ * @param cn
+ * @param eap_meth
+ * @param phase2
+ * @param caName
+ * @return error
+ */
 	public boolean createConnection(String ssid, String username, String password, String anonymous, String cn,
 			int eap_meth, int phase2, String caName) {
 		Log.d("ews-debug", ssid);
@@ -70,7 +86,11 @@ public class WifiSetup {
 		}
 		return false;
 	}
-
+ /**
+  * Get wificonfiguration by ssid
+  * @param ssid
+  * @return wificonfiguration
+  */
 	public WifiConfiguration getWifiConfiguration(String ssid) {
 		List<WifiConfiguration> wifis = wifiObj.getConfiguredNetworks();
 		if (wifis != null) {
@@ -82,15 +102,28 @@ public class WifiSetup {
 		}
 		return null;
 	}
-
+    /**
+     * removes wifi by id
+     * @param netId
+     * @return success
+     */
 	public boolean removeWifi(int netId) {
 		return wifiObj.removeNetwork(netId);
 	}
-
+    
+	/**
+	 * adds new wifi config
+	 * @param config
+	 * @return netID
+	 */
 	public int addWifi(WifiConfiguration config) {
 		return wifiObj.addNetwork(config);
 	}
-
+    /**
+     * get certificate by name
+     * @param caName
+     * @return Certificate
+     */
 	private X509Certificate getRootCA(String caName) {
 		return certMan.getCertificate(caName);
 	}
